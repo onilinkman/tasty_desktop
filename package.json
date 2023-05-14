@@ -16,12 +16,12 @@
 	"author": "Christian Marban Callisaya",
 	"license": "MIT",
 	"devDependencies": {
-		"@electron-forge/maker-squirrel": "^6.1.1",
 		"@electron-forge/publisher-github": "^6.1.1",
 		"electron": "^24.2.0",
 		"electron-builder": "^23.6.0"
 	},
 	"dependencies": {
+		"@electron-forge/maker-squirrel": "^6.1.1",
 		"bootstrap": "^5.2.3",
 		"bootstrap-icons": "^1.10.5",
 		"electron-is-dev": "^2.0.0",
