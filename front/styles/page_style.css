@@ -7,3 +7,8 @@ body{
     display: grid;
     align-items: center;
 }
+
+@font-face{
+    font-family: 'chewy';
+    src:url('../fonts/Chewy-Regular.ttf')
+}

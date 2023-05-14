@@ -14,4 +14,42 @@
     border-radius: 15px;
     border-color: #004aad;
     border-width: 11px;
+    transition: 0.5s;
+}
+
+.margin-button:hover{
+    background: #004aad4f;
+    box-shadow: 13px 7px 20px 7px #3c3c3cbd;
+}
+
+.margin-button:active{
+    background: #004aad4f;
+    box-shadow: inset 13px 7px 20px 7px #3c3c3cbd;
+}
+
+.title{
+    font-family: 'chewy';
+    color: #004aad;
+    font-size: 6rem;
+    -webkit-app-region: drag;
+}
+
+.sub-title{
+    color: #004aad;
+    font-size: 2rem;
+}
+
+.icon-width{
+    position: relative;
+    animation:movecow 2s 1;
+}
+
+@keyframes movecow{
+    0%{
+        width: 200px !important;
+        transform: translateX(calc(50%));
+    }
+    100%{
+        transform: translateX(0px);
+    }
 }
