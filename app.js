@@ -25,7 +25,9 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
 	createWindow();
+	const updater = require('./updater');
 });
+
 
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') app.quit();
