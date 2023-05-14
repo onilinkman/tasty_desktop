@@ -1,6 +1,6 @@
 {
 	"name": "inventorysystem",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Sistema de inventario para una heladeria",
 	"main": "app.js",
 	"repository": {
@@ -10,11 +10,14 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "electron .",
-		"dist": "electron-builder"
+		"dist": "electron-builder",
+		"publish": "electron-forge publish"
 	},
 	"author": "Christian Marban Callisaya",
 	"license": "MIT",
 	"devDependencies": {
+		"@electron-forge/maker-squirrel": "^6.1.1",
+		"@electron-forge/publisher-github": "^6.1.1",
 		"electron": "^24.2.0",
 		"electron-builder": "^23.6.0"
 	},
@@ -22,6 +25,28 @@
 		"bootstrap": "^5.2.3",
 		"bootstrap-icons": "^1.10.5",
 		"electron-is-dev": "^2.0.0",
+		"electron-squirrel-startup": "^1.0.0",
 		"update-electron-app": "^2.0.1"
+	},
+	"electron-forge": {
+		"packagerConfig": {},
+		"makers": [
+			{
+				"name": "@electron-forge/maker-zip"
+			}
+		],
+		"publishers": [
+			{
+				"name": "@electron-forge/publisher-github",
+				"config": {
+					"repository": {
+						"owner": "onilinkman",
+						"name": "tasty_desktop"
+					},
+					"prerelease": false,
+					"draft": true
+				}
+			}
+		]
 	}
 }

@@ -2,6 +2,9 @@ const { app, BrowserWindow } = require('electron');
 const path= require('path')
 const isDev=require('electron-is-dev')
 
+
+const updater = require('./updater');
+
 const createWindow = () => {
 	const win = new BrowserWindow({
 		titleBarStyle: 'hidden',
@@ -25,7 +28,6 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
 	createWindow();
-	const updater = require('./updater');
 });
 
 
