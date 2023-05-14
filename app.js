@@ -1,4 +1,6 @@
 const { app, BrowserWindow } = require('electron');
+const path= require('path')
+const isDev=require('electron-is-dev')
 
 const createWindow = () => {
 	const win = new BrowserWindow({
@@ -11,10 +13,14 @@ const createWindow = () => {
 		width: 800,
 		height: 600,
 	});
+	if(isDev){
+		console.log('corriendo en desarrollo')
+	}else{
+		console.log('produccion')
+		require('update-electron-app')()
+	}
 
-	win.setOverlayIcon('./animal_cow.ico', 'Tasty');
-
-	win.loadFile('./front/index.html');
+	win.loadFile(path.join(__dirname,'/front/index.html'));
 };
 
 app.whenReady().then(() => {
