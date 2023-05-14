@@ -1,8 +1,17 @@
-.Draggable{
-    -webkit-app-region: drag;
+.Draggable {
+	-webkit-app-region: drag;
 }
 
 .titlebar {
-    -webkit-user-select: none;
-    -webkit-app-region: drag;
-  }
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+}
+
+.margin-button {
+    padding: 17px;
+    border: solid;
+    display: inline-block;
+    border-radius: 15px;
+    border-color: #004aad;
+    border-width: 11px;
+}
