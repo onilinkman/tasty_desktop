@@ -203,7 +203,7 @@
   dependencies:
     "@octokit/types" "^6.0.3"
 
-"@octokit/core@^3.2.4", "@octokit/core@^3.5.1", "@octokit/core@>=2", "@octokit/core@>=3":
+"@octokit/core@^3.2.4", "@octokit/core@^3.5.1":
   "integrity" "sha512-7RKRKuA4xTjMhY+eG3jthb3hlZCsOwg3rztWh75Xc+ShDWOfDDATWbeZpAHBNRpm4Tv9WgBMOy1zEJYXG6NJ7Q=="
   "resolved" "https://registry.npmjs.org/@octokit/core/-/core-3.6.0.tgz"
   "version" "3.6.0"
@@ -446,7 +446,7 @@
   "resolved" "https://registry.npmjs.org/ajv-keywords/-/ajv-keywords-3.5.2.tgz"
   "version" "3.5.2"
 
-"ajv@^6.12.0", "ajv@^6.9.1":
+"ajv@^6.12.0":
   "integrity" "sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g=="
   "resolved" "https://registry.npmjs.org/ajv/-/ajv-6.12.6.tgz"
   "version" "6.12.6"
@@ -1135,7 +1135,7 @@
     "lodash.template" "^4.2.2"
     "temp" "^0.9.0"
 
-"electron@^24.2.0", "electron@>= 6.0.0":
+"electron@^24.2.0":
   "integrity" "sha512-fEYAftYqFhveniWJbEHXjNMWjooFFIuqNj/eEFJkGzycInfBJq/c4E/dew++s6s0YLubxFnjoF2qZiqapLj0gA=="
   "resolved" "https://registry.npmjs.org/electron/-/electron-24.2.0.tgz"
   "version" "24.2.0"
@@ -1149,7 +1149,7 @@
   "resolved" "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz"
   "version" "8.0.0"
 
-"encoding@^0.1.0", "encoding@^0.1.13":
+"encoding@^0.1.13":
   "integrity" "sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A=="
   "resolved" "https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz"
   "version" "0.1.13"
