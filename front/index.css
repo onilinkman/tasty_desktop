@@ -39,6 +39,10 @@
     font-size: 2rem;
 }
 
+.text-tasty{
+    color: #004aad;
+}
+
 .icon-width{
     position: relative;
     animation:movecow 2s 1;

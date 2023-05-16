@@ -5,27 +5,151 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Tasty Inventory</title>
-		<link rel="stylesheet" href="../..//styles/page_style.css" />
+		<link rel="stylesheet" href="../../styles/page_style.css" />
+		<link rel="stylesheet" href="../../index.css" />
 		<link
 			rel="stylesheet"
 			href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 		/>
-        <link rel="stylesheet" href="../../index.css"/>
+		<link rel="stylesheet" href="../../index.css" />
 	</head>
 	<body>
-		<div class="content text-center">
+		<div class="container text-center">
 			<div class="row">
 				<div class="col">
 					<a href="../../index.html" class="btn btn-danger">Atras</a>
 				</div>
-                <div class="col-6">
-                    <p class="title fs-1">Sistema de inventario</p>
-                </div>
-                <div class="col"></div>
+				<div class="col-6">
+					<p class="title fs-1 titlebar">Sistema de inventario</p>
+				</div>
+				<div class="col"></div>
 			</div>
-			<div class="fs-1 text-info">hola</div>
+			<!-- ####################################### -->
+			<!-- Merchandise data inputs -->
+			<!-- ######################################## -->
+			<div class="row">
+				<div class="col form-floating mb-3">
+					<input
+						type="text"
+						class="form-control"
+						id="form_merchandise"
+						placeholder="Ingrese nombre de la mercaderia"
+					/>
+					<label for="form_merchandise">Nombre de Mercaderia</label>
+				</div>
+				<div class="col form-floating mb-3">
+					<input
+						type="date"
+						class="form-control"
+						id="form_data"
+						placeholder="Ingrese fecha"
+					/>
+					<label for="form_data">fecha</label>
+				</div>
+				<div class="col form-floating mb-3">
+					<input
+						type="text"
+						class="form-control"
+						id="form_place"
+						placeholder="Ingrese placa"
+					/>
+					<label for="form_place">Placa</label>
+				</div>
+			</div>
+			<!-- ####################################### -->
+
+			<!-- ####################################### -->
+			<!-- here insert items in to table -->
+			<!-- ######################################## -->
+			<div class="row">
+				<div class="sub-title mb-3">Ingresar los productos aqui:</div>
+				<div class="col-8 col-sm-6">
+					<div id="table-container-1" class="">tablita aqui</div>
+				</div>
+				<div class="col text-start">
+					<div class="row">
+						<div class="mb-3">
+							<label
+								for="item_name"
+								class="form-label text-tasty fw-bold"
+								>PRODUCTO</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="item_name"
+								placeholder="Ingrese nombre del producto"
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="mb-3">
+							<label
+								for="item_price"
+								class="form-label text-tasty fw-bold"
+								>PRECIO (Bs)</label
+							>
+							<input
+								type="number"
+								class="form-control"
+								id="item_price"
+								placeholder="Ingrese precio de venta"
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="mb-3">
+							<label
+								for="due_date"
+								class="form-label text-tasty fw-bold"
+								>FECHA DE VENCIMIENTO</label
+							>
+							<input
+								type="date"
+								class="form-control"
+								id="due_date"
+								placeholder="Ingrese Fecha de vencimiento"
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="mb-3">
+							<label class="form-label text-tasty fw-bold"
+								>CATEGORIA</label
+							>
+							<select
+								class="form-select form-select-sm"
+								aria-label=".form-select-sm"
+							>
+								<option selected>
+									Seleccione la categoria
+								</option>
+								<option value="1">Lacteos</option>
+								<option value="2">Quesos</option>
+								<option value="3">Otros</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div>
+							<button class="btn btn-secondary fs-5 mt-2">
+								Agregar a la producto
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ####################################### -->
+			<!-- Merchandise data inputs -->
+			<!-- ######################################## -->
+			<div class="row">
+				<div class="container">
+					<button class="btn btn-success fs-2 mt-3">REGISTRAR</button>
+				</div>
+			</div>
 		</div>
 
 		<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="../../components/table/tablaDinamica.js"></script>
 	</body>
 </html>
