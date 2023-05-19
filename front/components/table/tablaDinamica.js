@@ -41,13 +41,13 @@ class TablasDinamicas {
 	crearTablaPorObjeto() {
 		if (this.x.length > 0) {
 			var arrayNameObjects = Object.keys(this.x[0]);
-			this.newTable = document.createElement("table");
+			this.newTable = document.createElement('table');
 
 			this.newTable.createCaption();
 			this.newTable.innerHTML =
-				"<caption>" + this.tituloTabla + "</caption>";
+				'<caption>' + this.tituloTabla + '</caption>';
 
-			var thead = document.createElement("thead");
+			var thead = document.createElement('thead');
 
 			var contenedorTabla = document.getElementById(this.contenedorId);
 			var nuevoFragmento = document.createDocumentFragment();
@@ -64,7 +64,7 @@ class TablasDinamicas {
 			//            this.newTable.appendChild(newTr);
 			//****FIN DEL LLENADO DE LA CABECERA***
 
-			var tbody = document.createElement("tbody");
+			var tbody = document.createElement('tbody');
 
 			//*******LLENADO DEL CUERPO******
 			for (let i = 0; i < this.x.length; i++) {
@@ -75,7 +75,7 @@ class TablasDinamicas {
 					this.datosAOmitir,
 					this.agregarColumnaExtra
 				);
-				this.newTable.appendChild(newTrBody);
+				tbody.appendChild(newTrBody);
 			}
 			//*******FIN LLENADO TABLA **********
 			this.newTable.appendChild(tbody);
@@ -83,21 +83,21 @@ class TablasDinamicas {
 			nuevoFragmento.appendChild(this.newTable);
 			this.newTable.id = this.nombreTabla;
 
-			this.botonExcel = document.createElement("button");
+			this.botonExcel = document.createElement('button');
 
 			this.botonExcel.onclick = () => {
-				var data_type = "data:application/vnd.ms-excel";
-				var tabla_html = this.newTable.outerHTML.replace(/ |#/g, "%20");
-				var tempElemento = document.createElement("a");
+				var data_type = 'data:application/vnd.ms-excel';
+				var tabla_html = this.newTable.outerHTML.replace(/ |#/g, '%20');
+				var tempElemento = document.createElement('a');
 				tempElemento.href =
 					data_type + ',<meta charset="UTF-8">' + tabla_html;
-				tempElemento.download = "TablaExcel.xls";
+				tempElemento.download = 'TablaExcel.xls';
 				tempElemento.click();
 			};
-			this.botonExcel.id = "button" + this.nombreTabla;
-			this.botonExcel.classList.add("botonEditarPedido");
+			this.botonExcel.id = 'button' + this.nombreTabla;
+			this.botonExcel.classList.add('botonEditarPedido');
 			this.botonExcel.appendChild(
-				document.createTextNode("Generar Excel")
+				document.createTextNode('Generar Excel')
 			);
 			//this.botonExcel.style.display="none";//comentar para que aparezca el boton de generar excel
 			contenedorTabla.appendChild(this.botonExcel);
@@ -112,10 +112,10 @@ class TablasDinamicas {
 	 * Se define el tamaño de la tabla con un input
 	 */
 	inputTamañoTabla() {
-		var newInput = document.createElement("input");
+		var newInput = document.createElement('input');
 		newInput.value = this.cantidadInPage;
-		newInput.setAttribute("type", "number");
-		newInput.setAttribute("min", "1");
+		newInput.setAttribute('type', 'number');
+		newInput.setAttribute('min', '1');
 		newInput.onkeydown = () => {
 			this.cantidadInPage = newInput.value;
 			this.x = this.realObjeto.slice(0, this.cantidadInPage);
@@ -127,28 +127,28 @@ class TablasDinamicas {
 
 	//Obtiene de un objeto
 	obteniendoCabezera(objetoTr, datosAOmitir, cabeceraExtra, cambiarNombre) {
-		var newTr = document.createElement("tr");
+		var newTr = document.createElement('tr');
 
-		for (let j = 0; j < cabeceraExtra.length; j++) {
-			var newTh = document.createElement("th");
-			newTh.appendChild(document.createTextNode(cabeceraExtra[j]));
-			newTh.classList.add("cabecera");
-			newTr.appendChild(newTh);
-		}
 		for (let i = 0; i < objetoTr.length; i++) {
-			if (datosAOmitir.has(objetoTr[i])) {
-				var newTh = document.createElement("th");
+			if (!datosAOmitir.has(objetoTr[i])) {
+				var newTh = document.createElement('th');
 				newTh.appendChild(
 					document.createTextNode(
-						typeof cambiarNombre == "object" &&
+						typeof cambiarNombre == 'object' &&
 							cambiarNombre.has(objetoTr[i])
 							? cambiarNombre.get(objetoTr[i])
 							: objetoTr[i]
 					)
 				);
-				newTh.classList.add("cabecera");
+				newTh.classList.add('cabecera');
 				newTr.appendChild(newTh);
 			}
+		}
+		for (let j = 0; j < cabeceraExtra.length; j++) {
+			var newTh = document.createElement('th');
+			newTh.appendChild(document.createTextNode(cabeceraExtra[j]));
+			newTh.classList.add('cabecera');
+			newTr.appendChild(newTh);
 		}
 		return newTr;
 	}
@@ -183,9 +183,9 @@ class TablasDinamicas {
 	paginador(funcionBoton = null) {
 		this.eliminarPaginador();
 		var contenedor = document.getElementById(this.contenedorId);
-		this.paginadorContenedor = document.createElement("div");
-		this.paginadorContenedor.classList.add("contPaginador");
-		this.paginadorContenedor.id = "contPaginador" + this.nombreTabla;
+		this.paginadorContenedor = document.createElement('div');
+		this.paginadorContenedor.classList.add('contPaginador');
+		this.paginadorContenedor.id = 'contPaginador' + this.nombreTabla;
 		var modObj = this.cantidadElementos / this.cantidadInPage;
 		var intLengthObj = Math.trunc(modObj);
 		var sw = true;
@@ -197,11 +197,11 @@ class TablasDinamicas {
 			i++
 		) {
 			if (i < this.puntero + 3 || i === pageCont - 1) {
-				var newButton = document.createElement("button");
-				newButton.id = "paginaButton" + pageCont;
+				var newButton = document.createElement('button');
+				newButton.id = 'paginaButton' + pageCont;
 				newButton.appendChild(document.createTextNode(i + 1));
 				if (this.puntero === i) {
-					newButton.style.background = "rgb(233, 144, 144)";
+					newButton.style.background = 'rgb(233, 144, 144)';
 				}
 				if (funcionBoton === null) {
 					newButton.onclick = () => {
@@ -222,9 +222,9 @@ class TablasDinamicas {
 				this.paginadorContenedor.appendChild(newButton);
 			} else if (i < pageCont - 1 && sw) {
 				sw = false;
-				var tres = document.createElement("label");
-				tres.id = "tresPuntos";
-				tres.appendChild(document.createTextNode(" ......... "));
+				var tres = document.createElement('label');
+				tres.id = 'tresPuntos';
+				tres.appendChild(document.createTextNode(' ......... '));
 				this.paginadorContenedor.appendChild(tres);
 			}
 		}
@@ -238,7 +238,17 @@ class TablasDinamicas {
 	}
 
 	existePaginador() {
-		return !!document.getElementById("contPaginador" + this.nombreTabla);
+		return !!document.getElementById('contPaginador' + this.nombreTabla);
+	}
+
+	/**
+	 * Agrega una nueva clase a la tabla, es bueno para darle mas estilos.
+	 * @param {string} nameclass
+	 */
+	AddClass(nameclass) {
+		try {
+			this.newTable.classList.add(nameclass);
+		} catch (err) {}
 	}
 
 	//obteniendoCuerpo agrega una fila a la tabla
@@ -249,26 +259,16 @@ class TablasDinamicas {
 		datosAOmitir,
 		agregarColumnaExtra
 	) {
-		var newTr = document.createElement("tr");
+		var newTr = document.createElement('tr');
 
-    for (let i = 0; i < agregarColumnaExtra.length; i++) {
-			if (typeof agregarColumnaExtra[i] === "function") {
-				var newTd = agregarColumnaExtra[i](fila);
-        console.log(newTd)
-				newTd.classList.add("casilla");
-				newTr.appendChild(newTd);
-			}
-		}
-		newTr.id = "fila" + fila;
-		for (let i = 0; i < arrayNameObjects.length-1; i++) {
-			if (datosAOmitir.has(arrayNameObjects[i])) {
-				var newTd = document.createElement("td");
-        console.log(i);
-        console.log(Elemento[arrayNameObjects[i]]);
+		newTr.id = 'fila' + fila;
+		for (let i = 0; i < arrayNameObjects.length; i++) {
+			if (!datosAOmitir.has(arrayNameObjects[i])) {
+				var newTd = document.createElement('td');
 				newTd.appendChild(
 					document.createTextNode(Elemento[arrayNameObjects[i]])
 				);
-				newTd.classList.add("casilla");
+				newTd.classList.add('casilla');
 				if (this.funcionColumna !== null) {
 					newTd.onclick = () => {
 						this.funcionColumna(i);
@@ -277,7 +277,13 @@ class TablasDinamicas {
 				newTr.appendChild(newTd);
 			}
 		}
-
+		for (let i = 0; i < agregarColumnaExtra.length; i++) {
+			if (typeof agregarColumnaExtra[i] === 'function') {
+				var newTd = agregarColumnaExtra[i](fila);
+				newTd.classList.add('casilla');
+				newTr.appendChild(newTd);
+			}
+		}
 
 		if (this.funcionFila !== null) {
 			newTr.onclick = () => {
@@ -289,24 +295,24 @@ class TablasDinamicas {
 
 	mostrarBotonExcel() {
 		if (this.existeBotonExcel()) {
-			document.getElementById("button" + this.nombreTabla).style.display =
-				"block";
+			document.getElementById('button' + this.nombreTabla).style.display =
+				'block';
 		}
 	}
 
 	ocultarBotonExcel() {
 		if (this.existeBotonExcel()) {
-			document.getElementById("button" + this.nombreTabla).style.display =
-				"none";
+			document.getElementById('button' + this.nombreTabla).style.display =
+				'none';
 		}
 	}
 
 	existeBotonExcel() {
-		return !!document.getElementById("button" + this.nombreTabla);
+		return !!document.getElementById('button' + this.nombreTabla);
 	}
 
 	eliminarFila(fila) {
-		document.getElementById("fila" + fila).remove();
+		document.getElementById('fila' + fila).remove();
 	}
 
 	eliminarEstaTabla() {
@@ -318,18 +324,18 @@ class TablasDinamicas {
 	agregarFila(fila, objeto) {
 		var arrayLlaves = Object.keys(objeto);
 		var newTr = this.newTable.insertRow(fila);
-		newTr.id = "filaCreada" + fila;
+		newTr.id = 'filaCreada' + fila;
 		for (let i = 0; i < arrayLlaves.length; i++) {
-			var newTd = document.createElement("td");
+			var newTd = document.createElement('td');
 			newTd.appendChild(document.createTextNode(objeto[arrayLlaves[i]]));
-			newTd.classList.add("casilla");
+			newTd.classList.add('casilla');
 			newTr.appendChild(newTd);
 		}
 
 		for (let i = 0; i < arguments.length; i++) {
-			if (typeof arguments[i] === "function") {
+			if (typeof arguments[i] === 'function') {
 				var newTd = arguments[i](fila);
-				newTd.classList.add("casilla");
+				newTd.classList.add('casilla');
 				newTr.appendChild(newTd);
 			}
 		}
@@ -341,7 +347,7 @@ class TablasDinamicas {
 
 	searchTextByArray(texto) {
 		var objetoFiltrado = [];
-		if (texto == "") {
+		if (texto == '') {
 			return this.realObjeto;
 		}
 		texto = texto.toString().toLocaleLowerCase();
@@ -361,24 +367,24 @@ class TablasDinamicas {
 							if (
 								texto.length > detalle.length ||
 								detalle
-									.normalize("NFD")
-									.replace(/[\u0300-\u036f]/g, "")
+									.normalize('NFD')
+									.replace(/[\u0300-\u036f]/g, '')
 									.search(
 										texto
-											.normalize("NFD")
-											.replace(/[\u0300-\u036f]/g, "")
-									) == "-1"
+											.normalize('NFD')
+											.replace(/[\u0300-\u036f]/g, '')
+									) == '-1'
 							) {
 								continue;
 							} else if (
 								detalle
-									.normalize("NFD")
-									.replace(/[\u0300-\u036f]/g, "")
+									.normalize('NFD')
+									.replace(/[\u0300-\u036f]/g, '')
 									.search(
 										texto
-											.normalize("NFD")
-											.replace(/[\u0300-\u036f]/g, "")
-									) != "-1"
+											.normalize('NFD')
+											.replace(/[\u0300-\u036f]/g, '')
+									) != '-1'
 							) {
 								objetoFiltrado.push(aux);
 								break;

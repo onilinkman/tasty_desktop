@@ -79,6 +79,22 @@ function createTableMerchandise() {
 	});
 }
 
+function AddMerchandise(name, date, plate, callback) {
+	db.run(
+		`INSERT INTO merchandise(name,date,plate) 
+	VALUES (?,?,?)`,
+		[name, date, plate],
+		(err) => {
+			callback(err);
+			/* if(err){
+				console.log(err)
+			}else{
+				console.log('success')
+			} */
+		}
+	);
+}
+
 function createTableItem() {
 	return new Promise((resolve, reject) => {
 		db.run(
@@ -120,4 +136,5 @@ function CreateTables() {
 module.exports = {
 	InitDB,
 	getDB,
+	AddMerchandise,
 };

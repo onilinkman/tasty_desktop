@@ -64,7 +64,7 @@
 			<div class="row">
 				<div class="sub-title mb-3">Ingresar los productos aqui:</div>
 				<div class="col-8 col-sm-6">
-					<div id="table-container-1" class="">tablita aqui</div>
+					<div id="table-container-1" class="table-responsive"></div>
 				</div>
 				<div class="col text-start">
 					<div class="row">
@@ -120,6 +120,7 @@
 							<select
 								class="form-select form-select-sm"
 								aria-label=".form-select-sm"
+								id="type_item"
 							>
 								<option selected>
 									Seleccione la categoria
@@ -132,7 +133,7 @@
 					</div>
 					<div class="row">
 						<div>
-							<button class="btn btn-secondary fs-5 mt-2">
+							<button class="btn btn-secondary fs-5 mt-2" onclick="addItemArray()">
 								Agregar a la producto
 							</button>
 						</div>
@@ -144,12 +145,18 @@
 			<!-- ######################################## -->
 			<div class="row">
 				<div class="container">
-					<button class="btn btn-success fs-2 mt-3">REGISTRAR</button>
+					<button
+						class="btn btn-success fs-2 mt-3"
+						onclick="AddMerchandise()"
+					>
+						REGISTRAR
+					</button>
 				</div>
 			</div>
 		</div>
 
-		<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="../../components/table/tablaDinamica.js"></script>
+		<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="./inventory.js"></script>
 	</body>
 </html>
