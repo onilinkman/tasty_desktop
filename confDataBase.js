@@ -79,18 +79,42 @@ function createTableMerchandise() {
 	});
 }
 
-function AddMerchandise(name, date, plate, callback) {
+function AddMerchandise(name, date, plate, itemsArray = [], callback) {
+	db.run('BEGIN IMMEDIATE TRANSACTION');
 	db.run(
 		`INSERT INTO merchandise(name,date,plate) 
 	VALUES (?,?,?)`,
 		[name, date, plate],
-		(err) => {
-			callback(err);
-			/* if(err){
-				console.log(err)
-			}else{
-				console.log('success')
-			} */
+		function (err) {
+			if (err) {
+				db.run('ROLLBACK');
+				return callback(err);
+			} else {
+				let merchandiseId = this.lastID;
+				let stmt = db.prepare(
+					'INSERT INTO item(name,price,due_date,amount,id_merchandise) VALUES (?,?,?,?,?)'
+				);
+				for (let i = 0; i < itemsArray.length; i++) {
+					stmt.run(
+						[
+							itemsArray[i].nombre,
+							itemsArray[i].precio,
+							itemsArray[i].cantidad,
+							itemsArray[i].due_date,
+							merchandiseId,
+						],
+						(err2) => {
+							if (err2) {
+								db.run('ROLLBACK');
+								return callback(err2);
+							}
+						}
+					);
+				}
+				stmt.finalize();
+				db.run('COMMIT');
+				callback(err);
+			}
 		}
 	);
 }
@@ -103,6 +127,7 @@ function createTableItem() {
 			name TEXT NOT NULL,
 			price NUMERIC DEFAULT 0,
 			due_date TEXT,
+			amount INTEGER NOT NULL DEFAULT 0,
 			id_merchandise INTEGER NOT NULL,
 			FOREIGN KEY (id_merchandise)
 				REFERENCES merchandise (id_merchandise)

@@ -11,7 +11,8 @@ class TablasDinamicas {
 	 * @param x Aqui va el array de JSONs a mostrar
 	 * @param tituloTabla Aqui viene un String que sera el titulo de la tabla
 	 * @param cambiarNombre con este map se puede cambiar el nombre de los encabezados
-	 * @param nombreTabla le da el class/className a la tabla
+	 * @param classNames Un array de clases
+	 * @param nombreTabla esto dara el id a la tabla
 	 * @param datosAOmitir un has map para mostrar columnas que intente generar un JSON
 	 * @param cabeceraExtra un Array de Strings para aumentar cabeceras
 	 */
@@ -20,6 +21,7 @@ class TablasDinamicas {
 		x,
 		tituloTabla,
 		cambiarNombre,
+		classNames = [],
 		nombreTabla,
 		datosAOmitir,
 		cabeceraExtra
@@ -28,6 +30,7 @@ class TablasDinamicas {
 		this.realObjeto = x;
 		this.tituloTabla = tituloTabla;
 		this.cambiarNombre = cambiarNombre;
+		this.classNames = classNames;
 		this.nombreTabla = nombreTabla;
 		this.datosAOmitir = datosAOmitir;
 		this.cabeceraExtra = cabeceraExtra;
@@ -50,6 +53,9 @@ class TablasDinamicas {
 			var thead = document.createElement('thead');
 
 			var contenedorTabla = document.getElementById(this.contenedorId);
+			var newContainerTable = document.createElement('div');
+			newContainerTable.id = 'container_' + this.nombreTabla;
+			newContainerTable.classList.add('container_' + this.nombreTabla);
 			var nuevoFragmento = document.createDocumentFragment();
 
 			//*9****Para llenar la cabezera******
@@ -79,8 +85,9 @@ class TablasDinamicas {
 			}
 			//*******FIN LLENADO TABLA **********
 			this.newTable.appendChild(tbody);
-			this.newTable.classList.add(this.nombreTabla); //nombre de la clase que se le asigna la tabla
-			nuevoFragmento.appendChild(this.newTable);
+			this.agregarArrayClases(); //nombre de la clase que se le asigna la tabla
+			newContainerTable.appendChild(this.newTable);
+			nuevoFragmento.appendChild(newContainerTable);
 			this.newTable.id = this.nombreTabla;
 
 			this.botonExcel = document.createElement('button');
@@ -231,6 +238,13 @@ class TablasDinamicas {
 		contenedor.appendChild(this.paginadorContenedor);
 	}
 
+	actualizarX() {
+		this.x = this.realObjeto.slice(
+			this.puntero * this.cantidadInPage,
+			(this.puntero + 1) * this.cantidadInPage
+		);
+	}
+
 	eliminarPaginador() {
 		if (this.existePaginador()) {
 			this.paginadorContenedor.remove();
@@ -248,6 +262,7 @@ class TablasDinamicas {
 	AddClass(nameclass) {
 		try {
 			this.newTable.classList.add(nameclass);
+			this.classNames.push(nameclass);
 		} catch (err) {}
 	}
 
@@ -316,8 +331,15 @@ class TablasDinamicas {
 	}
 
 	eliminarEstaTabla() {
-		if (!!this.newTable) {
-			this.newTable.remove();
+		let container = document.getElementById(this.nombreTabla);
+		if (!!container) {
+			container.remove();
+		}
+	}
+
+	agregarArrayClases() {
+		for (let i = 0; i < this.classNames.length; i++) {
+			this.newTable.classList.add(this.classNames[i]);
 		}
 	}
 

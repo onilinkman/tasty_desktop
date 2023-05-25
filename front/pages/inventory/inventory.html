@@ -12,6 +12,7 @@
 			href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 		/>
 		<link rel="stylesheet" href="../../index.css" />
+		<link rel="stylesheet" href="../inventory/invertory.css" />
 	</head>
 	<body>
 		<div class="container text-center">
@@ -64,7 +65,7 @@
 			<div class="row">
 				<div class="sub-title mb-3">Ingresar los productos aqui:</div>
 				<div class="col-8 col-sm-6">
-					<div id="table-container-1" class="table-responsive"></div>
+					<div id="table-container-1"></div>
 				</div>
 				<div class="col text-start">
 					<div class="row">
@@ -93,6 +94,21 @@
 								type="number"
 								class="form-control"
 								id="item_price"
+								placeholder="Ingrese precio de venta"
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="mb-3">
+							<label
+								for="item_acount"
+								class="form-label text-tasty fw-bold"
+								>CANTIDAD</label
+							>
+							<input
+								type="number"
+								class="form-control"
+								id="item_acount"
 								placeholder="Ingrese precio de venta"
 							/>
 						</div>
@@ -133,7 +149,10 @@
 					</div>
 					<div class="row">
 						<div>
-							<button class="btn btn-secondary fs-5 mt-2" onclick="addItemArray()">
+							<button
+								class="btn btn-secondary fs-5 mt-2"
+								onclick="addItemArray()"
+							>
 								Agregar a la producto
 							</button>
 						</div>
@@ -144,6 +163,9 @@
 			<!-- Merchandise data inputs -->
 			<!-- ######################################## -->
 			<div class="row">
+				<div id="alertMessage" style="display: none;" class="alert alert-danger" role="alert">
+					A simple danger alert—check it out!
+				</div>
 				<div class="container">
 					<button
 						class="btn btn-success fs-2 mt-3"
