@@ -22,18 +22,20 @@ const AddMerchandise = async () => {
 	let date = document.getElementById('form_data').value;
 	let place = document.getElementById('form_place').value;
 	let alert = document.getElementById('alertMessage');
-	alert.style.display='block'
 	if (merchandise === '' && date === '' && place === '') {
+		alert.style.display = 'block';
 		alert.removeChild(alert.firstChild);
 		alert.appendChild(
 			document.createTextNode('debe llenar todos los campos')
 		);
 	} else if (itemsArray.length === 0) {
+		alert.style.display = 'block';
 		alert.removeChild(alert.firstChild);
 		alert.appendChild(
 			document.createTextNode('Debe agregar algun producto')
 		);
 	} else {
+		alert.style.display = 'none';
 		let msg = await window.api.AddMerchandise(
 			JSON.stringify({
 				merchandise,
@@ -42,6 +44,16 @@ const AddMerchandise = async () => {
 				itemsArray,
 			})
 		);
+		if (msg) {
+			alert.style.display = 'block';
+			alert.removeChild(alert.firstChild);
+			alert.appendChild(
+				document.createTextNode(
+					'Ocurrio un error al ingresar los items',
+					msg?.errno
+				)
+			);
+		}
 		console.log(msg, msg?.errno);
 	}
 };

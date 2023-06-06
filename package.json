@@ -22,7 +22,7 @@
 	},
 	"dependencies": {
 		"@electron-forge/maker-squirrel": "^6.1.1",
-		"bootstrap": "^5.2.3",
+		"bootstrap": "^5.3.0",
 		"bootstrap-icons": "^1.10.5",
 		"electron-is-dev": "^2.0.0",
 		"electron-squirrel-startup": "^1.0.0",

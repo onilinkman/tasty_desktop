@@ -5,19 +5,99 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Tasty Shop</title>
-		<link rel="stylesheet" href="../..//styles/page_style.css" />
+		<link rel="stylesheet" href="../../styles/page_style.css" />
 		<link
 			rel="stylesheet"
 			href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 		/>
+		<link rel="stylesheet" href="../../index.css" />
 	</head>
 	<body>
-        <div class="container text-center">
-            <div class="fs-1 text-info">hola</div>
-            <a href="../../index.html" class="btn btn-danger">click</a>
+		<div class="container text-center">
+			<div class="row">
+				<div class="col">
+					<a href="../../index.html" class="btn btn-danger">Atras</a>
+				</div>
+				<div class="col-6">
+					<p class="title fs-1 titlebar">Sistema de ventas</p>
+				</div>
+				<div class="col"></div>
+			</div>
+			<!-- ####################################### -->
+			<!-- Body inputs -->
+			<!-- ######################################## -->
+			<div class="row">
+				<div class="col-8 col-sm-6">
+					<div id="table-container-1">Tablita aqui</div>
+				</div>
+				<div class="col text-start">
+					<div class="row">
+						<div class="col mb-3">
+							<label
+								for="client_name"
+								class="form-label text-tasty fw-bold"
+								>Nombre completo</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="client_name"
+								placeholder="Ingrese nombre"
+							/>
+						</div>
+						<div class="col mb-3">
+							<label
+								for="client-ci"
+								class="form-label text-tasty fw-bold"
+								>CI/NIT</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="client-ci"
+								placeholder="Ingrese Carnet o Nit"
+							/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label
+								for="date-sale"
+								class="form-label text-tasty fw-bold"
+								>Fecha</label
+							>
+							<input
+								type="date"
+								class="form-control"
+								id="date-sale"
+							/>
+						</div>
+					</div>
+					<div class="row mt-5">
+						<div class="col">
+							<label
+								for="Total a pagar"
+								class="form-label text-tasty fw-bold"
+								>Total a pagar (Bs)</label
+							>
+							<input
+								type="text"
+								class="form-control"
+								id="Total a pagar"
+								value="0.0"
+								disabled
+							/>
+						</div>
+						<div class="col">
+							<button class="btn btn-success " style="
+							padding: 18px;
+							width: 130px;
+							border-radius: 50px 50px 50px 50px;">ACEPTAR</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        </div>
-
-        <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+		<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
 </html>

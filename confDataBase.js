@@ -143,12 +143,88 @@ function createTableItem() {
 	});
 }
 
+function createTableUser() {
+	return new Promise((resolve, reject) => {
+		db.run(
+			`CREATE TABLE IF NOT EXISTS user(
+			id_user INTEGER PRIMARY KEY AUTOINCREMENT,
+			name TEXT NOT NULL
+		)`,
+			(err) => {
+				if (err) {
+					reject('Error to create table user');
+				} else {
+					resolve('Table user is created');
+				}
+			}
+		);
+	});
+}
+
+function createTableSale() {
+	return new Promise((resolve, reject) => {
+		db.run(
+			`CREATE TABLE IF NOT EXISTS sale(
+			id_sale INTEGER PRIMARY KEY AUTOINCREMENT,
+			name TEXT NOT NULL,
+			ci TEXT NOT NULL,
+			date_sale TEXT NOT NULL,
+			id_user INTEGER,
+			FOREIGN KEY (id_user)
+				REFERENCES user (id_user)
+		)`,
+			(err) => {
+				if (err) {
+					reject('Error to create Table sale');
+				} else {
+					resolve('Table sale is created');
+				}
+			}
+		);
+	});
+}
+
+function createTableItemSale() {
+	return new Promise((resolve, reject) => {
+		db.run(
+			`CREATE TABLE IF NOT EXISTS item_sale(
+			id_sale INTEGER NOT NULL,
+			id_item INTEGER NOT NULL,
+			amount_sale INTEGER NOT NULL,
+			FOREIGN KEY (id_sale)
+				REFERENCES sale (id_sale),
+			FOREIGN KEY (id_item)
+				REFERENCES item (id_item)
+		)`,
+			(err) => {
+				if (err) {
+					reject('Error to create Table Item_sale');
+				} else {
+					resolve('Table item_sale is created');
+				}
+			}
+		);
+	});
+}
+
 function CreateTables() {
 	createTableUsers();
 	createTableMerchandise()
 		.then((result) => {
 			console.log(result);
 			return createTableItem();
+		})
+		.then((result) => {
+			console.log(result);
+			return createTableUser();
+		})
+		.then((result) => {
+			console.log(result);
+			return createTableSale();
+		})
+		.then((result) => {
+			console.log(result);
+			return createTableItemSale();
 		})
 		.then((result) => {
 			console.log(result);

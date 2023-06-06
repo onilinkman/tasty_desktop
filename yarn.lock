@@ -336,6 +336,11 @@
   dependencies:
     "@octokit/openapi-types" "^12.11.0"
 
+"@popperjs/core@^2.11.7":
+  "integrity" "sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A=="
+  "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz"
+  "version" "2.11.8"
+
 "@sindresorhus/is@^4.0.0":
   "integrity" "sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw=="
   "resolved" "https://registry.npmjs.org/@sindresorhus/is/-/is-4.6.0.tgz"
@@ -662,10 +667,10 @@
   "resolved" "https://registry.npmjs.org/bootstrap-icons/-/bootstrap-icons-1.10.5.tgz"
   "version" "1.10.5"
 
-"bootstrap@^5.2.3":
-  "integrity" "sha512-cEKPM+fwb3cT8NzQZYEu4HilJ3anCrWqh3CHAok1p9jXqMPsPTBhU25fBckEJHJ/p+tTxTFTsFQGM+gaHpi3QQ=="
-  "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-5.2.3.tgz"
-  "version" "5.2.3"
+"bootstrap@^5.3.0":
+  "integrity" "sha512-UnBV3E3v4STVNQdms6jSGO2CvOkjUMdDAVR2V5N4uCMdaIkaQjbcEAMqRimDHIs4uqBYzDAKCQwCB+97tJgHQw=="
+  "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.0.tgz"
+  "version" "5.3.0"
 
 "bottleneck@^2.15.3":
   "integrity" "sha512-VHiNCbI1lKdl44tGrhNfU3lup0Tj/ZBMJB5/2ZbNXRCPuRCO7ed2mgcK4r17y+KB2EfuYuRaVlwNbAeaWGSpbw=="
