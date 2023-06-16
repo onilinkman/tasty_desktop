@@ -2,7 +2,11 @@ const { app, autoUpdater, BrowserWindow } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
 const { InitDB } = require('./confDataBase');
-const { HandleAddMerchandise } = require('./handle');
+const {
+	HandleAddMerchandise,
+	HandleGetAllItems,
+	HandleAddUser,
+} = require('./handle');
 
 let mainWindow;
 
@@ -16,11 +20,14 @@ const createWindow = () => {
 		},
 		width: 800,
 		height: 600,
+		icon:__dirname+'/animal_cow.ico',
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
 		},
 	});
-	HandleAddMerchandise()
+	HandleAddMerchandise();
+	HandleGetAllItems();
+	HandleAddUser();
 
 	mainWindow.loadFile(path.join(__dirname, '/front/index.html'));
 };

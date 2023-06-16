@@ -99,8 +99,8 @@ function AddMerchandise(name, date, plate, itemsArray = [], callback) {
 						[
 							itemsArray[i].nombre,
 							itemsArray[i].precio,
-							itemsArray[i].cantidad,
 							itemsArray[i].due_date,
+							itemsArray[i].cantidad,
 							merchandiseId,
 						],
 						(err2) => {
@@ -207,6 +207,23 @@ function createTableItemSale() {
 	});
 }
 
+function GetAllItems(callback) {
+	db.all(
+		`SELECT id_item,name,price,amount,due_date FROM item
+	WHERE amount>0
+	ORDER BY due_date;`,
+		(err, rows) => {
+			callback(err, rows);
+		}
+	);
+}
+
+function AddUser(fullname, callback) {
+	db.run(`INSERT INTO user(fullname) VALUES (?)`, [fullname], (err) => {
+		callback(err);
+	});
+}
+
 function CreateTables() {
 	createTableUsers();
 	createTableMerchandise()
@@ -238,4 +255,6 @@ module.exports = {
 	InitDB,
 	getDB,
 	AddMerchandise,
+	GetAllItems,
+	AddUser,
 };

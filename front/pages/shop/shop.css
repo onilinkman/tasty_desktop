@@ -1,0 +1,7 @@
+.container_item_table{
+    overflow-x: auto;
+}
+
+.botonEditarPedido{
+    display: none;
+}

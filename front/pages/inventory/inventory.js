@@ -13,9 +13,16 @@ var tablaItems = new TablasDinamicas(
 	['table'],
 	'item_table',
 	datosAOmitir,
-	['hol'],
+	['Eliminar'],
 	removeItem
 );
+
+const hiddenSuccessMessage = () => {
+	setTimeout(() => {
+		let succ = document.getElementById('successMessage');
+		succ.style.display = 'none';
+	}, 3000);
+};
 
 const AddMerchandise = async () => {
 	let merchandise = document.getElementById('form_merchandise').value;
@@ -53,6 +60,14 @@ const AddMerchandise = async () => {
 					msg?.errno
 				)
 			);
+			let succ = document.getElementById('successMessage');
+			succ.style.display = 'none';
+		} else {
+			CleanDisplay();
+
+			let succ = document.getElementById('successMessage');
+			succ.style.display = 'block';
+			hiddenSuccessMessage();
 		}
 		console.log(msg, msg?.errno);
 	}
@@ -68,6 +83,11 @@ const addItemArray = () => {
 	let id_categoria = categoria.options.item(indexCat).value;
 	if (indexCat === 0) {
 		console.log('Debe seleccionar una categoria');
+		const toastLiveExample = document.getElementById('liveToast');
+
+		const toastBootstrap =
+			bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+		toastBootstrap.show();
 		return;
 	}
 	itemsArray.push({
@@ -77,6 +97,7 @@ const addItemArray = () => {
 		due_date: date,
 		id_categoria,
 	});
+	CleanDisplayItem();
 	tablaItems.setRealObjeto(itemsArray);
 	tablaItems.actualizarX();
 	tablaItems.actualizarTabla();
@@ -104,4 +125,35 @@ function removeItem(numFila) {
 	newButton.appendChild(document.createTextNode('Eliminar'));
 	newTd.appendChild(newButton);
 	return newTd;
+}
+
+const AddUser = async () => {
+	let inputFullName = document.getElementById('recipient-name');
+	let data = {
+		fullname: inputFullName.value,
+	};
+	console.log(data);
+	let msg = await window.api.AddUser(JSON.stringify(data));
+	console.log(msg);
+};
+
+function CleanDisplay() {
+	document.getElementById('item_name').value = '';
+	document.getElementById('item_price').value = '';
+	document.getElementById('item_acount').value = '';
+	document.getElementById('due_date').value = '';
+	document.getElementById('form_merchandise').value = '';
+	document.getElementById('form_data').value = '';
+	document.getElementById('form_place').value = '';
+	itemsArray = [];
+	tablaItems.setRealObjeto(itemsArray);
+	tablaItems.actualizarX();
+	tablaItems.actualizarTabla();
+}
+
+function CleanDisplayItem() {
+	document.getElementById('item_name').value = '';
+	document.getElementById('item_price').value = '';
+	document.getElementById('item_acount').value = '';
+	document.getElementById('due_date').value = '';
 }
