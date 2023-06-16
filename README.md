@@ -1,5 +1,9 @@
 # tasty_desktop
 
+## EJECUTABLE
+
+El ejecutable esta en un archivo .rar y puede ir a descargarlo [HACIENDO CLICK AQUI!!!!](https://mega.nz/file/UFUhkLgQ#DY4EYsWsJVjRpvsCmRqaeXY_4WBFRWh8HAzDIB27ZDc)
+
 ## Requisitos previos
 
 - Tener instalado node.js version v16.14.2 con npm version 8.5.5
