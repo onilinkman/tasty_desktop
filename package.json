@@ -1,6 +1,6 @@
 {
 	"name": "tasty_desktop",
-	"version": "1.0.1 Beta",
+	"version": "1.0.1",
 	"description": "Sistema de inventario para una heladeria",
 	"main": "app.js",
 	"repository": {
