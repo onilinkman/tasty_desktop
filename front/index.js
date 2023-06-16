@@ -1,4 +1,4 @@
-(() => {
+/* (() => {
 	'use strict';
 
 	const getStoredTheme = () => localStorage.getItem('theme');
@@ -85,4 +85,4 @@
 			});
 		});
 	});
-})();
+})(); */
